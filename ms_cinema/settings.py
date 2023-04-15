@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "rest_framework",
     # CORS
     "corsheaders",
+    # Movies
+    "movies",
 ]
 
 MIDDLEWARE = [
