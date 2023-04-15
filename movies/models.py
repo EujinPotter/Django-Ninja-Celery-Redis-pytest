@@ -17,5 +17,11 @@ class Movie(models.Model):
   status = models.CharField(max_length=2, choices=MovieStatus.choices, default=MovieStatus.COMINGUP)
   ranking = models.IntegerField(default=0)
 
+  class Meta:
+    indexes = [
+      models.Index(fields=['name']),
+      models.Index(fields=['ranking'])
+    ]
+
   def __str__(self) -> str:
     return self.name
