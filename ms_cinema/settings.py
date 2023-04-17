@@ -64,6 +64,15 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:3000",
 )
 
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BEAT_SCHEDULE = {
+    'update_movie_ranking': {
+        'task': 'movies.tasks.update_movie_ranking',
+        'schedule': 300,  # 5 minutes in seconds
+    },
+}
+
 ROOT_URLCONF = "ms_cinema.urls"
 
 TEMPLATES = [
