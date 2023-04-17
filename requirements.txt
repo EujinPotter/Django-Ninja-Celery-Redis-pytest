@@ -1,0 +1,6 @@
+pytest~=7.3.1
+django~=4.1.8
+ninja~=1.11.1
+celery~=5.2.7
+djangorestframework~=3.14.0
+pathlib~=1.0.1
