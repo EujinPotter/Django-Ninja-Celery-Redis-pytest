@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / "subdir".
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -69,7 +70,7 @@ CELERY_RESULT_BACKEND = "redis://localhost:6379"
 CELERY_BEAT_SCHEDULE = {
     'update_movie_ranking': {
         'task': 'api.movies.tasks.update_movie_ranking',
-        'schedule': 300,  # 5 minutes in seconds
+        'schedule': int(os.getenv("RANKING_INTERVAL")),  # 5 minutes in seconds
     },
 }
 
@@ -100,19 +101,19 @@ WSGI_APPLICATION = "ms_cinema.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "ms_cinema",
-        "USER": "postgres",
-        "PASSWORD": "Dmsgktn-4",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "NAME": os.getenv("POSTGRE_NAME"),
+        "USER": os.getenv("POSTGRE_USER"),
+        "PASSWORD": os.getenv("POSTGRE_PASSWORD"),
+        "HOST": os.getenv("POSTGRE_HOST"),
+        "PORT": os.getenv("POSTGRE_PORT"),
     },
     "sync_mongo": {
-        "NAME": "ms_cinema",
         "ENGINE": "djongo",
-        "USERS": "",
-        "PASSWORD": "",
-        "HOST": "127.0.0.1",
-        "PORT": "27017",
+        "NAME": os.getenv("MONGO_NAME"),
+        "USER": os.getenv("MONGO_USER"),
+        "PASSWORD": os.getenv("MONGO_PASSWORD"),
+        "HOST": os.getenv("MONGO_HOST"),
+        "PORT": os.getenv("MONGO_PORT"),
     }
 }
 
