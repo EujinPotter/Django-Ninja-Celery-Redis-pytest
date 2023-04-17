@@ -1,4 +1,4 @@
-from ..models import Movie, MovieStatus
+from api.movies.models import Movie, MovieStatus
 import pytest
 from datetime import date
 

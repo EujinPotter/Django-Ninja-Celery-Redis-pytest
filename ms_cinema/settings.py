@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     # CORS
     "corsheaders",
     # Movies
-    "movies",
+    "api.movies",
 ]
 
 MIDDLEWARE = [
@@ -68,7 +68,7 @@ CELERY_BROKER_URL = "redis://localhost:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
 CELERY_BEAT_SCHEDULE = {
     'update_movie_ranking': {
-        'task': 'movies.tasks.update_movie_ranking',
+        'task': 'api.movies.tasks.update_movie_ranking',
         'schedule': 300,  # 5 minutes in seconds
     },
 }
@@ -118,7 +118,7 @@ DATABASES = {
 
 
 DATABASE_ROUTERS = [
-    "movies.router.MoviesRouter"
+    "api.movies.router.MoviesRouter"
 ]
 
 
