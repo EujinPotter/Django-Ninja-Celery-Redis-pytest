@@ -2,4 +2,5 @@
 upload
 upload/**/*
 .idea
+.pytest_cache
 celerybeat-schedule*
