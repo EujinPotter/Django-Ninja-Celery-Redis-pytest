@@ -8,3 +8,5 @@ def update_movie_ranking():
     # Get all movies with status="coming-up"
     coming_up_movies = Movie.objects.filter(status=MovieStatus.COMINGUP)
     coming_up_movies.update(ranking=models.F("ranking") + 10)
+    for movie in coming_up_movies:
+        movie.save(using="sync_mongo")
