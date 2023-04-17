@@ -20,6 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# noinspection SpellCheckingInspection
 SECRET_KEY = "django-insecure-w-b%u76n(q$)2l94qji86_u1y=-)lfvgji8tns%(b_-mq6g*be"
 
 # SECURITY WARNING: don"t run with debug turned on in production!
@@ -96,8 +97,8 @@ DATABASES = {
         "HOST": "127.0.0.1",
         "PORT": "5432",
     },
-    "mongoose": {
-        "NAME": "MongoDB",
+    "sync_mongo": {
+        "NAME": "ms_cinema",
         "ENGINE": "djongo",
         "USERS": "",
         "PASSWORD": "",
@@ -105,6 +106,11 @@ DATABASES = {
         "PORT": "27017",
     }
 }
+
+
+DATABASE_ROUTERS = [
+    "movies.router.MoviesRouter"
+]
 
 
 # Password validation
