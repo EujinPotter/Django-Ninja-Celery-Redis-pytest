@@ -101,11 +101,11 @@ WSGI_APPLICATION = "ms_cinema.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRE_NAME"),
-        "USER": os.getenv("POSTGRE_USER"),
-        "PASSWORD": os.getenv("POSTGRE_PASSWORD"),
-        "HOST": os.getenv("POSTGRE_HOST"),
-        "PORT": os.getenv("POSTGRE_PORT"),
+        "NAME": os.getenv("POSTGRES_NAME"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": os.getenv("POSTGRES_HOST"),
+        "PORT": os.getenv("POSTGRES_PORT"),
     },
     "sync_mongo": {
         "ENGINE": "djongo",
