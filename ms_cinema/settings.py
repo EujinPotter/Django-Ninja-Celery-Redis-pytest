@@ -70,7 +70,7 @@ CELERY_RESULT_BACKEND = "redis://localhost:6379"
 CELERY_BEAT_SCHEDULE = {
     'update_movie_ranking': {
         'task': 'api.movies.tasks.update_movie_ranking',
-        'schedule': int(os.getenv("RANKING_INTERVAL")),  # 5 minutes in seconds
+        'schedule': int(os.getenv("RANKING_INTERVAL") or "300"),  # 5 minutes in seconds
     },
 }
 
