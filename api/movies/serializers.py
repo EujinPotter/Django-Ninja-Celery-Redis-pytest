@@ -1,7 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, MovieStatus
-
-from datetime import date
+from .models import Movie
 
 
 class MovieSerializer(serializers.ModelSerializer):

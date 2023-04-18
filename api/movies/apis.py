@@ -14,8 +14,6 @@ def create_movie(request):
     serializer = MovieSerializer(data=post_data)
     if serializer.is_valid():
         serializer.save()
-        for created_data in Movie.objects.filter(id=serializer.data["id"]):
-            created_data.save(using="sync_mongo")
         return 200, serializer.data
     return 400, serializer.errors
 

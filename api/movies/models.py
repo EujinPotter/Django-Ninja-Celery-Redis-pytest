@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import signals
+from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 from datetime import date
 
@@ -27,3 +29,17 @@ class Movie(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+@receiver(signals.post_save, sender=Movie)
+def movie_post_save_receiver(instance: Movie, using, **kwargs):
+    if using == "sync_mongo":
+        return
+    instance.save(using="sync_mongo")
+
+
+@receiver(signals.post_delete, sender=Movie)
+def move_post_delete_receiver(instance: Movie, using, **kwargs):
+    if using == "sync_mongo":
+        return
+    instance.delete(using="sync_mongo")
