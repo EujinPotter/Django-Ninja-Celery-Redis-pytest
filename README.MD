@@ -1,7 +1,6 @@
 # Django Ninja + PostgreSQL + MongoDB + Redis + Celery
 
-## RESTful APIS
-
+## RESTful APIS ###
 Developed RESTful APIs using Django Ninja.
 
 ## PostgreSQL
@@ -9,7 +8,6 @@ Developed RESTful APIs using Django Ninja.
 Database name is <b>"ms_cinema"</b>
 
 ### Environment Variables
-
 <code>
 <pre>
 POSTGRES_NAME="ms_cinema"       // Database name
@@ -19,13 +17,10 @@ POSTGRES_HOST="127.0.0.1"       // Host
 POSTGRES_PORT="5432"            // Port
 </pre>
 </code>
-
 ## MongoDB
 
 Collection name is <b>"ms_cinema"</b>
-
 ### Environment Variables
-
 <code>
 <pre>
 MONGO_NAME="ms_cinema"          // Database name
@@ -37,7 +32,6 @@ MONGO_PORT="27017"              // Port
 </code>
 
 ## Running Server
-
 <code>
 <pre>
 $ python manage.py makemigrations
@@ -51,9 +45,7 @@ $ python manage.py runserver
 
 - Broker: Redis
 - Producer: Redis
-
 ### Worker
-
 <code>
 <pre>
 $ celery -A ms_cinema worker -l info
@@ -61,7 +53,6 @@ $ celery -A ms_cinema worker -l info
 </code>
 
 ### Beat
-
 <code>
 <pre>
 $ celery -A ms_cinema beat -l info
@@ -69,9 +60,7 @@ $ celery -A ms_cinema beat -l info
 </code>
 
 ## PyTest
-
 Unit testing about models and views.
-
 <code>
 <pre>
 $ pytest
