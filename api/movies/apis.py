@@ -1,6 +1,7 @@
 from ninja import Router
 from .models import Movie
 from .serializers import MovieSerializer
+from ms_cinema.scheduler import scheduler
 
 
 movies_api = Router()
@@ -13,7 +14,7 @@ def create_movie(request):
     post_data["poster"] = request.FILES["poster"]
     serializer = MovieSerializer(data=post_data)
     if serializer.is_valid():
-        serializer.save()
+        Movie(serializer).save(using="sync_mongo")
         return 200, serializer.data
     return 400, serializer.errors
 

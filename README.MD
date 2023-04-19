@@ -35,7 +35,7 @@ MONGO_PORT="27017"              // Port
 <code>
 <pre>
 $ python manage.py makemigrations
-$ python manage.py migrate
+$ python manage.py migrate --run-syncdb
 $ python manage.py migrate --database sync_mongo
 $ python manage.py runserver
 </pre>

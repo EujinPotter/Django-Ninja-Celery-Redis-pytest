@@ -11,11 +11,10 @@ class MovieSerializer(serializers.ModelSerializer):
 
 
 @receiver(signals.post_save, sender=Movie)
-def movie_post_save_receiver(instance: Movie, using, created, **kwargs):
-    if using == "sync_mongo":
+def movie_post_save_receiver(instance: Movie, using, **_kwargs):
+    if using == "default":
         return
-    for record in Movie.objects.filter(id=MovieSerializer(instance).data["id"]):
-        record.save(using="sync_mongo")
+    instance.save(using="default")
 
 
 @receiver(signals.post_delete, sender=Movie)
